@@ -1,7 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:onboarding_assignment/constan.dart';
-import 'package:onboarding_assignment/content_model.dart';
-import 'package:onboarding_assignment/homepage.dart';
+import 'package:onboarding_assignment/util/constan.dart';
+import 'package:onboarding_assignment/model/content_model.dart';
+import 'package:onboarding_assignment/ui/homepage/homepage.dart';
+
+const activeColour = Colors.deepOrange;
+const inactiveColour = Colors.orange;
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -85,24 +90,25 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextButton(
-                  onPressed: () {
-                    _controller.nextPage(
-                        duration: Duration(microseconds: 100),
-                        curve: Curves.bounceIn);
-                    if (currentIndex == contents.length - 1) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (_) => HomePage()),
-                      );
-                    }
-                  },
-                  child: Text(
-                    currentIndex == contents.length - 1 ? 'continue' : 'Next',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  )),
-            ),
+                onPressed: () {
+                  _controller.nextPage(
+                      duration: Duration(microseconds: 100),
+                      curve: Curves.bounceIn);
+                  if (currentIndex == contents.length - 1) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => HomePage()),
+                    );
+                  }
+                },
+                child: Text(
+                  currentIndex == contents.length - 1 ? 'Continue' : 'Next',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -115,7 +121,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       width: currentIndex == index ? 15 : 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).primaryColor,
+        color: currentIndex == index ? activeColour : inactiveColour,
       ),
       margin: EdgeInsets.only(right: 5),
     );
