@@ -5,6 +5,8 @@ import 'package:onboarding_assignment/util/constan.dart';
 import 'package:onboarding_assignment/model/content_model.dart';
 import 'package:onboarding_assignment/ui/homepage/homepage.dart';
 
+import '../../util/customText/customtext.dart';
+
 const activeColour = Colors.deepOrange;
 const inactiveColour = Colors.orange;
 
@@ -57,14 +59,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          contents[i].title!,
-                          style: kLabelTextStyleA,
+                        CustomText(
+                          label: contents[i].title!,
+                          textStyle: kLabelTextStyleA,
                         ),
-                        Text(
-                          contents[i].description!,
-                          style: kLabelTextStyleB,
-                          textAlign: TextAlign.center,
+                        CustomText(
+                          label: contents[i].description!,
+                          textStyle: kLabelTextStyleB,
                         )
                       ],
                     ),
