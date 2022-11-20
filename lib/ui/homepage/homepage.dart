@@ -11,24 +11,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(
-          label: 'Welcome to HomePage',
-          textStyle: kLabelTextStyleB,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              MyApp.themeNotifier.value =
-                  MyApp.themeNotifier.value == ThemeMode.light
-                      ? ThemeMode.dark
-                      : ThemeMode.light;
-            },
-            icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
-                ? Icons.dark_mode
-                : Icons.light_mode),
-          )
-        ],
-      ),
+          title: CustomText(
+            label: 'Welcome to HomePage',
+            textStyle: kLabelTextStyleB,
+          ),
+          backgroundColor: Colors.deepOrange),
     );
   }
 }

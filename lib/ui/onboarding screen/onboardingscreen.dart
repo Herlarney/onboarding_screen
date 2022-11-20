@@ -34,43 +34,46 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
           children: [
-            Expanded(
-              child: PageView.builder(
-                controller: _controller,
-                itemCount: contents.length,
-                onPageChanged: (int index) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
-                itemBuilder: ((_, i) {
-                  return Padding(
-                    padding: const EdgeInsets.all(40.0),
-                    child: Column(
-                      children: <Widget>[
-                        Image.asset(
-                          contents[i].image!,
-                          height: 300,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        CustomText(
-                          label: contents[i].title!,
-                          textStyle: kLabelTextStyleA,
-                        ),
-                        CustomText(
-                          label: contents[i].description!,
-                          textStyle: kLabelTextStyleB,
-                        )
-                      ],
-                    ),
-                  );
-                }),
+            SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              child: Expanded(
+                child: PageView.builder(
+                  controller: _controller,
+                  itemCount: contents.length,
+                  onPageChanged: (int index) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                  itemBuilder: ((_, i) {
+                    return Padding(
+                      padding: const EdgeInsets.all(40.0),
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            contents[i].image!,
+                            height: 300,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomText(
+                            label: contents[i].title!,
+                            textStyle: kLabelTextStyleA,
+                          ),
+                          CustomText(
+                            label: contents[i].description!,
+                            textStyle: kLabelTextStyleB,
+                          )
+                        ],
+                      ),
+                    );
+                  }),
+                ),
               ),
             ),
             Container(
@@ -87,7 +90,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               margin: EdgeInsets.all(40),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: Colors.deepOrange,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextButton(
